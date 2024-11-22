@@ -1,0 +1,456 @@
+<h2>Mon compte</h2>
+<form (ngSubmit)="onSave()">
+    
+    <!--Paragraphe identité de la personne-->
+    <div id="IdPersn">
+
+        <h4>Identité</h4>
+        <mat-form-field>
+            <label for="name">Nom de famille</label>
+            <input matInput id="name" placeholder="Nom de famille" [(ngModel)]="user.name" name="name">
+        </mat-form-field>
+
+        <mat-form-field>
+            <label for="usageName">Nom d'usage</label>
+            <input matInput id="usageName" placeholder="Nom d'usage" [(ngModel)]="user.name" name="name">
+        </mat-form-field>
+
+        <mat-form-field>
+            <label for="username">Prénoms</label>
+            <input matInput id="username" placeholder="Prénoms" [(ngModel)]="user.username" name="username" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <label for="birthDate">Date de naissance</label>
+            <input matInput id="birthDate" [matDatepicker]="picker" placeholder="Date de naissance" [(ngModel)]="user.birthDate" name="birthDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <label for="address">Lieu de naissance</label>
+            <input matInput id="address" placeholder="Lieu de naissance" [(ngModel)]="user.address" name="address">
+        </mat-form-field>
+
+        <mat-form-field>
+            <label for="nationality">Nationalité</label>
+            <input matInput id="nationality" placeholder="Nationalité" [(ngModel)]="user.username" name="username" disabled>
+        </mat-form-field>
+  </div> 
+  
+  <!--Paragraphe Etat civil de la personne-->
+  <div id="EtatCivil">
+    
+    <h4>Informations d'Etat Civil</h4>
+    <nav>
+        <ul>
+            <li class="deroulant"><a href="#">Situation familiale &ensp;</a>
+                <ul class="sous">
+                    <li><a href="#">Célibataire</a></li>
+                    <li><a href="#">Marié.e</a></li>
+                    <li><a href="#">Pacsé.e</a></li>
+                    <li><a href="#">Divorcé.e</a></li>
+                    <li><a href="#">Veuf.ve</a></li>
+                </ul>
+
+            </li>
+        </ul>
+    </nav>
+
+    <mat-form-field>
+        <label for="number">Nombre d'enfants à charge</label>
+        <input matInput id="number" placeholder="Nombre d'enfants à charge" [(ngModel)]="user.number" name="number">
+    </mat-form-field>
+  </div>
+
+  <!--Paragraphe contact et coordonnées de la personne-->
+  <div id="contact">
+    
+    <h4>Coordonnées</h4>
+    <mat-form-field>
+        <label for="contactAddress">Adresse</label>
+        <input matInput id="contactAddress" placeholder="Adresse" [(ngModel)]="user.address" name="address">
+    </mat-form-field>
+
+    <mat-form-field>
+        <label for="phone">Téléphone</label>
+        <input matInput id="phone" placeholder="Téléphone" [(ngModel)]="user.phone" name="phone">
+    </mat-form-field>
+
+    <mat-form-field>
+        <label for="email">Email</label>
+        <input matInput id="email" placeholder="Email" [(ngModel)]="user.email" name="email" type="email" disabled>
+    </mat-form-field>
+  </div>
+  
+  <!--Paragraphe numéros officiels de la personne-->
+  <div id="officiel">
+    
+    <h4>Identifiants officiels</h4>
+    
+    <mat-form-field>
+        <label for="ine">Numéro national étudiant (INE)</label>
+        <input matInput id="ine" placeholder="Numéro national étudiant (INE)" [(ngModel)]="user.name" name="numéro" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <label for="allocataire">Numéro d'allocataire CAF</label>
+        <input matInput id="allocataire" placeholder="Numéro d'allocataire CAF" [(ngModel)]="user.name" name="numéro" />
+    </mat-form-field>
+      
+    <mat-form-field>
+        <label for="poleEmploi">Numéro pôle emploi</label>
+        <input matInput id="poleEmploi" placeholder="Numéro pôle emploi" [(ngModel)]="user.name" name="numéro" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <label for="fiscalNumber">Numéro fiscal</label>
+        <input matInput id="fiscalNumber" placeholder="Numéro fiscal" [(ngModel)]="user.name" name="numéro" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <label for="socialSecurity">Numéro de sécurité sociale</label>
+        <input matInput id="socialSecurity" placeholder="Numéro de sécurité sociale" [(ngModel)]="user.name" name="numéro" />
+    </mat-form-field>    
+  </div>
+
+  <!--Paragraphe renseignements bancaires de la personne-->
+  <div id="banque">
+    
+    <h4>Informations bancaires</h4>
+    <mat-form-field>
+        <label for="rib">RIB</label>
+        <input matInput id="rib" placeholder="RIB" [(ngModel)]="user.rib" name="rib"
+             pattern="^\d{5}-\d{5}-\d{11}-\d{2}$" title="Le format du RIB doit être : 5 chiffres, 5 chiffres, 11 caractères et 2 chiffres"
+             maxlength="23" required />
+    </mat-form-field>
+
+    <mat-form-field>
+        <label for="iban">IBAN</label>
+        <input matInput id="iban" placeholder="IBAN" [(ngModel)]="user.iban" name="iban"
+             pattern="^[A-Z]{2}\d{2}[A-Z0-9]{4}\d{4}[A-Z0-9]{10}$" title="L'IBAN doit commencer par 2 lettres, suivi de 2 chiffres, puis des lettres et des chiffres"
+             maxlength="34" required />
+    </mat-form-field>
+
+    <mat-form-field>
+        <label for="bic">BIC</label>
+        <input matInput id="bic" placeholder="BIC" [(ngModel)]="user.bic" name="bic"
+             pattern="^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?$" title="Le BIC doit être de 8 ou 11 caractères alphanumériques"
+             maxlength="11" required />
+    </mat-form-field>
+  </div>
+
+  <!--Paragraphe profession de la personne-->
+  <div id="profession">
+    
+    <h4>Situation professionnelle</h4>
+    <nav>
+        <ul>
+            <li class="deroulant">
+                <a href="#" role="button" aria-haspopup="true" aria-expanded="false">Statut professionnel &ensp;</a>
+                <ul class="sous" role="menu">
+                    <li><a href="#" role="menuitem">Mineur</a></li>
+                    <li><a href="#" role="menuitem">Etudiant.e</a></li>
+                    <li><a href="#" role="menuitem">Sans emploi</a></li>
+                    <li><a href="#" role="menuitem">Demandeur d'emploi</a></li>
+                    <li><a href="#" role="menuitem">Actif</a></li>
+                    <li><a href="#" role="menuitem">Retraité.e</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>    
+
+    <nav>
+        <ul>
+            <li class="deroulant">
+                <a href="#" role="button" aria-haspopup="true" aria-expanded="false">Catégories sociaux profesionnelles &ensp;</a>
+                <ul class="sous" role="menu">
+                    <li><a href="#" role="menuitem">Agriculteurs exploitants</a></li>
+                    <li><a href="#" role="menuitem">Artisans, commerçants et chefs d'entreprise</a></li>
+                    <li><a href="#" role="menuitem">Cadres et professions intellectuelles supérieures</a></li>
+                    <li><a href="#" role="menuitem">Professions intermédiaires</a></li>
+                    <li><a href="#" role="menuitem">Employés</a></li>
+                    <li><a href="#" role="menuitem">Ouvriers</a></li>
+                    <li><a href="#" role="menuitem">Retraités</a></li>
+                    <li><mat-form-field>
+                        <label for="otherCategory">Autre précision</label>
+                        <input matInput id="otherCategory" placeholder="Autre précision" [(ngModel)]="user.name" name="name">
+                    </mat-form-field></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>    
+
+    <form [formGroup]="contractForm">
+        <div>
+          <label>
+            <input type="checkbox" formControlName="isCdd" /> CDD
+          </label>
+          <label>
+            <input type="checkbox" formControlName="isCdi" /> CDI
+          </label>
+          <label>
+            <input type="checkbox" formControlName="isInterim" /> Intérim
+          </label>
+        </div>
+      
+        <!-- Ajout de contrats -->
+        <button (click)="addContract()">Ajouter un contrat</button>
+      
+        <div formArrayName="contracts">
+          <div *ngFor="let contract of contracts.controls; let i = index" [formGroupName]="i">
+            <!-- CDD -->
+            <div *ngIf="contract.get('isCdd')?.value">
+              <label for="cddStartDate">Date début CDD</label>
+              <input type="date" formControlName="cddStartDate" />
+              <label for="cddEndDate">Date fin CDD</label>
+              <input type="date" formControlName="cddEndDate" />
+              <label for="cddCompanyName">Nom de l'entreprise</label>
+              <input type="text" formControlName="cddCompanyName" />
+              <label for="cddBossName">Nom de l'employeur</label>
+              <input type="text" formControlName="cddBossName" />
+            </div>
+      
+            <!-- CDI -->
+            <div *ngIf="contract.get('isCdi')?.value">
+              <label for="cdiStartDate">Date début CDI</label>
+              <input type="date" formControlName="cdiStartDate" />
+              <label for="cdiCompanyName">Nom de l'entreprise</label>
+              <input type="text" formControlName="cdiCompanyName" />
+              <label for="cdiBossName">Nom de l'employeur</label>
+              <input type="text" formControlName="cdiBossName" />
+            </div>
+      
+            <!-- Intérim -->
+            <div *ngIf="contract.get('isInterim')?.value">
+              <label for="interimStartDate">Date début Intérim</label>
+              <input type="date" formControlName="interimStartDate" />
+              <label for="interimEndDate">Date fin Intérim</label>
+              <input type="date" formControlName="interimEndDate" />
+              <label for="interimCompanyName">Nom de l'entreprise</label>
+              <input type="text" formControlName="interimCompanyName" />
+              <label for="interimBossName">Nom de l'employeur</label>
+              <input type="text" formControlName="interimBossName" />
+            </div>
+      
+            <button (click)="removeContract(i)">Supprimer ce contrat</button>
+          </div>
+        </div>
+      </form>
+
+      <mat-form-field>
+        <label for="number">Revenu mensuel</label>
+        <input matInput id="number" placeholder="Nombre d'enfants à charge" [(ngModel)]="user.number" name="number">
+      </mat-form-field>   
+
+      <mat-form-field>
+        <label for="number">Salaire net annuel</label>
+        <input matInput id="number" placeholder="Nombre d'enfants à charge" [(ngModel)]="user.number" name="number">
+      </mat-form-field>
+  </div>
+
+  <!--Paragraphe logement de la personne-->
+  <div id="logement">
+
+    <h4>Situation de logement</h4>
+
+    <nav>
+        <ul>
+            <li class="deroulant">
+                <a href="#" role="button" aria-haspopup="true" aria-expanded="false">Type de logement &ensp;</a>
+                <ul class="sous" role="menu">
+                    <li><a href="#" role="menuitem">Propriétaire</a></li>
+                    <li><a href="#" role="menuitem">Locataire</a></li>
+                    <li><a href="#" role="menuitem">Hébergé.e</a></li>
+                    <li><a href="#" role="menuitem">Logement de fonction</a></li>
+                    <li><a href="#" role="menuitem">Logement social</a></li>
+                    <li><mat-form-field>
+                        <label for="otherCategory">Autre précision</label>
+                        <input matInput id="otherCategory" placeholder="Autre précision" [(ngModel)]="user.name" name="name">
+                    </mat-form-field></li>
+                </ul>
+            </li>
+        </ul>
+    </nav> 
+    
+    <mat-form-field>
+        <label for="number">Montant du loyer mensuel</label>
+        <input matInput id="number" placeholder="Montant du loyer mensuel" [(ngModel)]="user.number" name="number">
+    </mat-form-field>
+
+    <mat-form-field>
+        <label for="number">Surface habitable</label>
+        <input matInput id="number" placeholder="Surface habitable" [(ngModel)]="user.number" name="number">
+    </mat-form-field>
+  </div>
+
+  <!--Paragraphe ressources et revenus de la personne-->
+  <div id="ressource">
+
+    <h4>Ressources et revenus</h4>
+
+    <mat-form-field>
+        <label for="number">Revenus imposables annuels</label>
+        <input matInput id="number" placeholder="Revenus imposables annuels" [(ngModel)]="user.number" name="number">
+    </mat-form-field>
+
+    <h5>Prestations sociales reçues</h5>
+    <mat-form-field>
+        <label for="number">Allocations familiales</label>
+        <input matInput id="number" placeholder="Allocations familiales"[(ngModel)]="user.number" name="number">
+    </mat-form-field>
+    <mat-form-field>
+        <label for="number">RSA</label>
+        <input matInput id="number" placeholder="RSA"[(ngModel)]="user.number" name="number">
+    </mat-form-field>
+    <mat-form-field>
+        <label for="number">APL</label>
+        <input matInput id="number" placeholder="APL"[(ngModel)]="user.number" name="number">
+    </mat-form-field>
+    <mat-form-field>
+        <label for="number">AAH</label>
+        <input matInput id="number" placeholder="AAH"[(ngModel)]="user.number" name="number">
+    </mat-form-field>
+  </div>
+
+  <!--Paragraphe handicap de la personne-->
+  <div id="handicap">
+
+    <mat-checkbox [(ngModel)]="hasHandicap" name="hasHandicap" (change)="onHandicapChange()">
+        Avoir un handicap
+      </mat-checkbox>
+      
+      <div *ngIf="hasHandicap">
+        <mat-checkbox [(ngModel)]="hasDisabilityRate" name="hasDisabilityRate">
+          Taux d'incapacité
+        </mat-checkbox>
+        <div *ngIf="hasDisabilityRate">
+          <mat-form-field>
+            <label for="disabilityRate">Taux d'incapacité (%)</label>
+            <input matInput id="disabilityRate" placeholder="Taux d'incapacité" [(ngModel)]="userHandicap.disabilityRate" name="disabilityRate" type="number" required>
+          </mat-form-field>
+        </div>
+  
+        <mat-checkbox [(ngModel)]="underGuardianship" name="underGuardianship">
+          Situation sous tutelle
+        </mat-checkbox>
+        <div *ngIf="underGuardianship">
+          <h5>Informations du tuteur</h5>
+          <mat-form-field>
+            <label for="guardianName">Nom du tuteur</label>
+            <input matInput id="guardianName" placeholder="Nom" [(ngModel)]="userHandicap.guardianName" name="guardianName" required>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <label for="guardianFirstName">Prénom du tuteur</label>
+            <input matInput id="guardianFirstName" placeholder="Prénom" [(ngModel)]="userHandicap.guardianFirstName" name="guardianFirstName" required>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <label for="guardianAddress">Adresse du tuteur</label>
+            <input matInput id="guardianAddress" placeholder="Adresse" [(ngModel)]="userHandicap.guardianAddress" name="guardianAddress" required>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <label for="guardianPhone">Numéro de téléphone du tuteur</label>
+            <input matInput id="guardianPhone" placeholder="Numéro de téléphone" [(ngModel)]="userHandicap.guardianPhone" name="guardianPhone" required>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <label for="guardianEmail">Email du tuteur</label>
+            <input matInput id="guardianEmail" placeholder="Email" [(ngModel)]="userHandicap.guardianEmail" name="guardianEmail" type="email" required>
+          </mat-form-field>
+        </div>
+  
+        <mat-checkbox [(ngModel)]="hasCaregiver" name="hasCaregiver">
+          Auxiliaire de vie / Aide soignante
+        </mat-checkbox>
+        <div *ngIf="hasCaregiver">
+          <h5>Informations de l'auxiliaire de vie / aide soignante</h5>
+          <mat-form-field>
+            <label for="caregiverName">Nom de l'auxiliaire de vie / aide soignante</label>
+            <input matInput id="caregiverName" placeholder="Nom" [(ngModel)]="userHandicap.caregiverName" name="caregiverName" required>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <label for="caregiverFirstName">Prénom de l'auxiliaire de vie / aide soignante</label>
+            <input matInput id="caregiverFirstName" placeholder="Prénom" [(ngModel)]="userHandicap.caregiverFirstName" name="caregiverFirstName" required>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <label for="caregiverAddress">Adresse de l'auxiliaire de vie / aide soignante</label>
+            <input matInput id="caregiverAddress" placeholder="Adresse" [(ngModel)]="userHandicap.caregiverAddress" name="caregiverAddress" required>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <label for="caregiverPhone">Numéro de téléphone de l'auxiliaire de vie / aide soignante</label>
+            <input matInput id="caregiverPhone" placeholder="Numéro de téléphone" [(ngModel)]="userHandicap.caregiverPhone" name="caregiverPhone" required>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <label for="caregiverEmail">Email de l'auxiliaire de vie / aide soignante</label>
+            <input matInput id="caregiverEmail" placeholder="Email" [(ngModel)]="userHandicap.caregiverEmail" name="caregiverEmail" type="email" required>
+          </mat-form-field>
+        </div>
+      </div>
+
+    <mat-form-field>
+        <label for="name">Maladies / problèmes de santé à signaler</label>
+        <input matInput id="name" placeholder="Maladies / problèmes de santé à signaler" [(ngModel)]="userHandicap.healthProblem" healthProblem="name">
+    </mat-form-field>
+  </div>
+
+  <!--Paragraphe autres informations de la personne-->
+  <div id="autres">
+
+    <h4>Personne de contact en cas d'urgence</h4>
+    <mat-form-field>
+        <label for="name">Nom de famille</label>
+        <input matInput id="name" placeholder="Nom de famille" [(ngModel)]="user.name" name="name">
+    </mat-form-field>
+    <mat-form-field>
+        <label for="username">Prénoms</label>
+        <input matInput id="username" placeholder="Prénoms" [(ngModel)]="user.username" name="username" disabled>
+    </mat-form-field>
+    <mat-form-field>
+        <label for="contactAddress">Adresse</label>
+        <input matInput id="contactAddress" placeholder="Adresse" [(ngModel)]="user.address" name="address">
+    </mat-form-field>
+
+    <mat-form-field>
+        <label for="phone">Téléphone</label>
+        <input matInput id="phone" placeholder="Téléphone" [(ngModel)]="user.phone" name="phone">
+    </mat-form-field>
+
+    <mat-form-field>
+        <label for="email">Email</label>
+        <input matInput id="email" placeholder="Email" [(ngModel)]="user.email" name="email" type="email" disabled>
+    </mat-form-field>
+
+    <h4>Médecin généraliste</h4>
+    <mat-form-field>
+        <label for="name">Nom de famille</label>
+        <input matInput id="name" placeholder="Nom de famille" [(ngModel)]="user.name" name="name">
+    </mat-form-field>
+    <mat-form-field>
+        <label for="username">Prénoms</label>
+        <input matInput id="username" placeholder="Prénoms" [(ngModel)]="user.username" name="username" disabled>
+    </mat-form-field>
+    <mat-form-field>
+        <label for="contactAddress">Adresse</label>
+        <input matInput id="contactAddress" placeholder="Adresse" [(ngModel)]="user.address" name="address">
+    </mat-form-field>
+
+    <mat-form-field>
+        <label for="phone">Téléphone</label>
+        <input matInput id="phone" placeholder="Téléphone" [(ngModel)]="user.phone" name="phone">
+    </mat-form-field>
+
+    <mat-form-field>
+        <label for="email">Email</label>
+        <input matInput id="email" placeholder="Email" [(ngModel)]="user.email" name="email" type="email" disabled>
+    </mat-form-field>
+  </div>
+  
+  <button mat-raised-button type="submit">Enregistrer</button>
+</form>

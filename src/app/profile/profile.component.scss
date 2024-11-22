@@ -1,0 +1,56 @@
+nav {
+    font-family: Arial, sans-serif;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        .deroulant {
+            position: relative;
+
+            > a {
+                text-decoration: none;
+                color: black;
+                padding: 10px;
+                display: inline-block;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #f0f0f0;
+                }
+            }
+
+            .sous {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                background-color: white;
+                border: 1px solid #ccc;
+                width: 200px;
+
+                li a {
+                    text-decoration: none;
+                    color: black;
+                    display: block;
+                    padding: 10px;
+                    background-color: white;
+
+                    &:hover {
+                        background-color: #f0f0f0;
+                    }
+                }
+            }
+
+            &:hover {
+                .sous {
+                    display: block;
+                }
+            }
+        }
+    }
+}

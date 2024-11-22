@@ -1,0 +1,28 @@
+<h2>Première connexion</h2>
+<div *ngIf="!isCodeSent">
+  <form (ngSubmit)="onRegister()">
+    <mat-form-field>
+      <input matInput placeholder="Identifiant" [(ngModel)]="username" name="username" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email" [(ngModel)]="email" name="email" type="email" required>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="ConfimationEmail" [(ngModel)]="ConfimationEmail" name="email" type="email" required>
+      </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Mot de passe" [(ngModel)]="password" name="password" type="password" required>
+    </mat-form-field>
+    <button mat-raised-button type="submit">Valider</button>
+  </form>
+</div>
+
+<div *ngIf="isCodeSent">
+  <h3>Vérification du code</h3>
+  <p>Un code à 6 chiffres a été envoyé à votre adresse email.</p>
+  <mat-form-field>
+    <input matInput placeholder="Code" [(ngModel)]="verificationCode" name="code" required>
+  </mat-form-field>
+  <button mat-raised-button (click)="onVerifyCode()">Valider</button>
+  <div *ngIf="errorMessage">{{ errorMessage }}</div>
+</div>
